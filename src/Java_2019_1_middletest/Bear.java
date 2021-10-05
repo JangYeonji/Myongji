@@ -1,4 +1,4 @@
-package Java_2019_1_middletask;
+package Java_2019_1_middletest;
 
 import java.util.Scanner;
 
