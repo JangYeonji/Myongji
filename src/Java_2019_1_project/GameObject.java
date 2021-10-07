@@ -1,4 +1,4 @@
-package Java_2019_1_middletest;
+package Java_2019_1_project;
 
 public abstract class GameObject { // 추상 클래스
 	protected int distance; // 한 번 이동 거리, protected라서 같은 패키지의 서브 클래스 가능
