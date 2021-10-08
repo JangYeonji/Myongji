@@ -1,7 +1,6 @@
 package Java_2019_2_tetris;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MyTetris2_3 extends JFrame{

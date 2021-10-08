@@ -1,6 +1,5 @@
 package Java_2019_2_tetris;
 
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
