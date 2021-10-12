@@ -33,7 +33,7 @@ public class Game extends JFrame{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			System.out.println("드라이버 적재 성공");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/data2?serverTimezone=UTC&useSSL=false", "root", "1234"); 
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/data2?serverTimezone=UTC&useSSL=false", "root", "root"); 
 			System.out.println("DB연결 성공");
 			stmt = conn.createStatement();
 			
