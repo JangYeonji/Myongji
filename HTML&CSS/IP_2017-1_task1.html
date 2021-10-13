@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		input { display: none; }
+		label { display: block; }
+		#radioin:checked ~ #pg > #ball {
+			animation-name: in;
+			animation-duration: 3s;
+			animation-timing-function: ease-in;
+		}
+		#radioout:checked ~ #pg > #ball {
+			animation-name: out;
+			animation-duration: 3s;
+			animation-timing-function: ease-out;
+		}
+		#radiotop:checked ~ #pg > #ball {
+			animation-name: top;
+			animation-duration: 3s;
+			animation-timing-function: ease-in-out;
+		}
+		#radiobot:checked ~ #pg > #ball {
+			animation-name: bot;
+			animation-duration: 3s;
+			animation-timing-function: linear;
+		}
+		#pg { 
+			width: 500px; height:500px;
+			background: #6a8799;
+			position: relative;
+		}
+		#ball { 
+			width: 100px; height: 100px;
+			background: #f6e1d0; 
+			position: absolute;
+			border-radius: 50%;
+			text-align: center;
+			color: #6a8799;
+			font-weight: bold;
+			line-height: 100px;
+			left: 200px; top: 200px;
+		}
+		@keyframes in {
+			0% { left: 600px; top: 0px; }
+			100% { left: 200px; top: 200px; }
+		}
+		@keyframes out {
+			0% { left: 200px; top: 200px; }
+			100% { left: 0px; top: 600px; }
+		}
+		@keyframes top {
+			0% { left: 200px; top: 200px; }
+			100% { left: 200px; top: 0px; }
+		}
+		@keyframes bot {
+			0% { left: 200px; top: 200px; }
+			100% { left: 200px; top: 400px; }
+		}
+	</style>
+</head>
+<body> 
+	<input id="radioin" type="radio" name="ani" />
+	<label id="in" for="radioin"> In </label>
+	<input id="radioout" type="radio" name="ani" />
+	<label id="out" for="radioout"> Out </label>
+	<input id="radiotop" type="radio" name="ani" />
+	<label id="top" for="radiotop"> Top </label>
+	<input id="radiobot" type="radio" name="ani" />
+	<label id="bot" for="radiobot"> Bottom </label>
+	<div id="pg">
+		<div id="ball">ball</div>
+	</div>  
+</body>
+</html>
