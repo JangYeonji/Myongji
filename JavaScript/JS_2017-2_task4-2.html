@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function ch(){
+				var nn = document.getElementById("name").value;
+				var ss = '';
+				
+				if(document.getElementById("man").checked)
+					ss = '남';
+				else if(document.getElementById("woman").checked)  
+					ss = '여';
+				document.getElementById("pr").innerHTML = nn + '님(' + ss + ') 반갑습니다';
+			}
+		</script>
+	</head>
+	<body>
+		<h2>회원가입</h2><span id="pr"> </span><br/><br/>
+		이름<input id="name" type="text" size="6" /><br/>
+		성별<br/>
+		<input id="man" type="radio" name="rr" />남
+		<input id="woman" type="radio" name="rr"/>여<br/>
+		<button onclick="ch()">회원가입</button>
+		
+	</body>
+</html>

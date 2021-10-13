@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+
+	var tmp=0;
+	
+	//시간
+	var myTimer = function(){
+		var d = new Date();
+		var tmp = d.toLocaleTimeString();
+		
+		$("#time").html(tmp);
+	};
+	
+	myVar = setInterval(function(){myTimer();},1000);
+	
+	//달력
+	var cYear = new Date().getFullYear(); 
+    var cMonth = new Date().getMonth(); 
+	var cDate = new Date().getDate(); 
+	var now = new Date().getDay();
+    var dd = $("td");
+	
+    var cal = function(){
+        $("#year").html(cYear);  
+        $("#month").html(cMonth+1);
+   
+		for(var i=0; i<42; i++)
+			dd.eq(i).html("&nbsp");
+
+        var startIndex = new Date(cYear, cMonth, 1).getDay(); //5
+        var monLength = 32 - new Date(cYear, cMonth, 32).getDate(); //31
+        var date = 1;
+		for(var i=startIndex; i<monLength+startIndex; i++){
+			dd.eq(i).html(date);
+            date = date + 1;
+		}
+		dd.eq(cDate+startIndex-1).addClass('ddeq');
+		
+		$("#today").html(cYear + '.' + (cMonth+1) + '.' + cDate);
+    };   
+        
+    cal();
+	
+    $("#prev").click(function(){
+        cYear = new Date(cYear, cMonth-1, cDate).getFullYear();
+        cMonth = new Date(cYear, cMonth-1, cDate).getMonth();
+        cal(cYear, cMonth);
+		
+		for(var i=0;i<45;i++)
+			dd.eq(i).removeClass('ddeq');
+    });
+	$("#next").click(function(){
+        cYear = new Date(cYear, cMonth+1, cDate).getFullYear();
+        cMonth = new Date(cYear, cMonth+1, cDate).getMonth();
+        cal(cYear, cMonth);
+		
+		for(var i=0;i<45;i++)
+			dd.eq(i).removeClass('ddeq');
+    });
+	
+	//슬라이드
+	function ss(index) {
+		var mm = -(index * 1300); //사이즈 조절
+		// 혹시 컴퓨터 화면이 15인치 이상이면 이 부분이랑 style부분 
+		// 1500이랑 6000으로 바꿔서 봐주시면 감사하겠습니다ㅜ
+		$('#main').animate({ left: mm }, 'slow');
+		$('.bt[data-index=' + index + ']').addClass('active');
+		$('.bt[data-index!=' + index + ']').removeClass('active');
+	}
+				
+	$('.bt').each(function (index) {
+		$(this).click(function () {
+			var index = $(this).attr('data-index');
+			ss(index);
+			$('body').css('background','url("인프인프13.png")')
+			.css('background-size','100%').css('background-attachment','fixed');
+		});
+	});
+	
+	//처음으로
+	$("#home").click(function(){
+        location.reload();
+    });
+	
+});
+</script>
+<style> 
+	body{
+		font-family: 'Patrick Hand SC', cursive;
+		background: url('인프인프!!!.png');
+		background-size: 100%;
+		background-attachment: fixed;
+		color: white;
+		margin: 0; padding: 0;
+		text-align: center;
+		overflow: hidden;
+	}
+	#menu {
+		font-size: 50px;
+		width: 20%;
+		height: 1000px;
+		background: rgba(0,0,0,0.6);
+		float: left;
+	}
+	#home{ cursor: pointer; }
+	#lp{
+		width: 200px; height: 200px;
+		margin-top: 20%;
+	}
+	.bt{
+		position:relative;
+		cursor:pointer;  
+		width: 250px; height: 100px;
+	}
+    .bt.active { background: url('back.png'); } 
+	#all{
+		overflow:hidden;  
+        position:relative;   
+		width: 80%; height: 1000px;		
+	}
+	#main{
+		width:5200px; /*사이즈 조절*/
+		position:absolute;
+	}
+	#il, #ir{ width: 50px; height: 50px; }
+	.ddeq{
+		color: yellow; font-weight: bold;
+		background: rgba(255,255,255,0.3); border-radius: 50%;
+	}
+	.nn { 
+		float:left; 
+		width:1300px; height:1000px; /*사이즈 조절*/
+	}  
+	table {
+		width: 64%; height: 550px;
+		text-align: center;
+		font-size: 30px;
+		border-radius: 25px;
+		background-color: rgba(0,0,0,0.5);
+		margin-left: 15%;
+	}
+	td, th{width: 8%; }
+	caption, #time, #today, #todo{
+		font-size: 50px;
+		margin: 20px;
+	}
+	#ti{ 
+		width: 500px; height: 30px; 
+		text-align: center;
+		font-size: 25px;
+		font-family: 'Patrick Hand SC', cursive;
+	}
+	#area{
+		margin-left: 13%;
+		margin-top: 3%;
+		float: left;
+	}
+	#sel{
+		margin-left: 5%;
+		float: left;
+	}
+	.s1{ font-size: 40px; }
+	.ss{ font-size: 25px; }
+	.ci, #yy1,#yy2,#yy3,#yy4,#yy5{ width: 30px; height: 30px; margin-right: 10px; }
+	#cc1,#cc2,#cc3,#cc4,#cc5 { display: none; }
+	#yy1,#yy2,#yy3,#yy4,#yy5 { visibility: hidden; }
+	#cc1:checked ~ #yy1 { visibility: visible; } 
+	#cc2:checked ~ #yy2 { visibility: visible; } 
+	#cc3:checked ~ #yy3 { visibility: visible; } 
+	#cc4:checked ~ #yy4 { visibility: visible; } 
+	#cc5:checked ~ #yy5 { visibility: visible; } 
+</style>
+</head>
+<body>
+<div id="menu">
+	<span id="home"><img id="lp" src="prince.png" /></br>
+	Little Prince</br></span>
+	<img data-index="1" class="bt" src="m_calendar.png" style="margin-top: 10px" />
+	<img data-index="2" class="bt" src="m_keep a diary.png" />
+	<img data-index="3" class="bt" src="m_to do list.png" />
+</div>
+<div id="all">
+	<div id="main">
+		<div class="nn"></div>
+		<div id="n1" class="nn">
+			<table id="calendar">
+				<caption>
+					<span id="year"></span>.
+					<span id="month"></span>
+				</caption>
+				<tr>
+					<th>SUN</th><th>MON</th><th>TUE</th><th>WED</th>
+					<th>THU</th><th>FRI</th><th>SAT</th>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+				</tr>
+			</table>
+			<a href="#" id="prev"><img id="il" src="i_l.png" /></a>
+			<span id="time"></span>
+			<a href="#" id="next"><img id="ir" src="i_r.png" /></a>
+		</div>
+		<div id="n2" class="nn">
+			<div id="today"></div>
+			<input type="text" id="ti" value="TITLE"/><br/>
+			<textarea id="area" cols="100" rows="35" /></textarea>
+			<div id="sel">
+				<br/>
+				<span class="s1">WEATHER</span><br/>
+				<span class="ss">Sunny</span><input type="radio" name="ww"/><br/>
+				<span class="ss">Cloudy</span><input type="radio" name="ww"/><br/>
+				<span class="ss">Foggy</span><input type="radio" name="ww"/><br/>
+				<span class="ss">Windy</span><input type="radio" name="ww"/><br/>
+				<span class="ss">Raining</span><input type="radio" name="ww"/><br/>
+				<span class="ss">Snowing</span><input type="radio" name="ww"/><br/><br/>
+				<span class="s1">FEELING</span><br/>
+				<span class="ss">Good</span><input type="radio" name="ff"/><br/>
+				<span class="ss">Nervous</span><input type="radio" name="ff"/><br/>
+				<span class="ss">Excited</span><input type="radio" name="ff"/><br/>
+				<span class="ss">Strange</span><input type="radio" name="ff"/><br/>
+				<span class="ss">Tired</span><input type="radio" name="ff"/><br/>
+				<span class="ss">Depressed</span><input type="radio" name="ff"/><br/>
+			</div>
+		</div>
+		<div id="n3" class="nn">
+			<div id="todo">To Do List</div>
+			<input type="checkbox" id="cc1" />
+			<label class="cl" for="cc1" id="l1"><img class="ci" src="checkw.png"/></label>
+			<input type="text" style="width: 500px; height: 30px;"/>
+			<img id="yy1" src="check.png"/><br /><br />
+			<input type="checkbox" id="cc2"/>
+			<label class="cl" for="cc2"><img class="ci" src="checkw.png"/></label>
+			<input type="text" style="width: 500px; height: 30px;"/>
+			<img id="yy2" src="check.png"/><br /><br />
+			<input type="checkbox" id="cc3"/>
+			<label class="cl" for="cc3"><img class="ci" src="checkw.png"/></label>
+			<input type="text" style="width: 500px; height: 30px;"/>
+			<img id="yy3" src="check.png"/><br /><br />
+			<input type="checkbox" id="cc4"/>
+			<label class="cl" for="cc4"><img class="ci" src="checkw.png"/></label>
+			<input type="text" style="width: 500px; height: 30px;"/>
+			<img id="yy4" src="check.png"/><br /><br />
+			<input type="checkbox" id="cc5"/>
+			<label class="cl" for="cc5"><img class="ci" src="checkw.png"/></label>
+			<input type="text" style="width: 500px; height: 30px;"/>
+			<img id="yy5" src="check.png"/><br /><br />
+		</div>
+	</div>
+</div>
+</body>
+</html>

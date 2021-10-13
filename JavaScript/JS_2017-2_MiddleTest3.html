@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function eval(){
+				var sum=0;
+				for(var i=0; i<4; i++){
+					var tmp = parseInt(document.getElementById("subj"+(i+1)).value);
+					if( !(tmp>= 0)){
+						alert("양수값을 넣어주세요");
+						document.getElementById("subj"+(i+1)).value="";
+						document.getElementById("subj"+(i+1)).focus();
+						return 0;
+					}
+					sum += tmp;
+				}
+				var name = document.getElementById("name").value;	
+				
+				document.getElementById("result").innerHTML += "결과 <br/>이름:  " + name + "  합: " + sum + " 평균: " + sum/4;	
+			}
+		</script>
+	</head>
+	<body>
+		<h2>성적처리</h2>
+		<table>
+	    <tr><td>이름</td><td><input type="text"  id="name" size="9" value="인보" /></td> </tr>
+		<tr><td>운영체제</td><td><input type="text"  id="subj1" size="3"/></td> </tr>
+		<tr><td>이산수학</td><td><input type="text"  id="subj2" size="3"/></td> </tr>
+		<tr><td>C언어</td><td><input type="text"  id="subj3" size="3"/></td> </tr>
+		<tr><td>인프2</td><td><input type="text"  id="subj4" size="3"/></td> </tr>
+		<tr><td colspan="2"><button id="btn" onclick="eval()">입력완료</button></td> </tr>
+		</table>
+		
+		<h3 id="result"></h3>
+		</script>			
+	</body>
+</html>		

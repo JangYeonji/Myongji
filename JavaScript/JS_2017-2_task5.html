@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>내가 태어난 요일 : </p>
+
+<p id="demo"></p>
+
+<script>
+var d = new Date("02/20/1998");
+
+var dd= d.getDay();
+
+if(dd == 1){
+	document.getElementById("demo").innerHTML = "월요일";
+}else if(dd == 2){
+	document.getElementById("demo").innerHTML = "화요일";
+}else if(dd == 3){
+	document.getElementById("demo").innerHTML = "수요일";
+}else if(dd == 4){
+	document.getElementById("demo").innerHTML = "목요일";
+}else if(dd == 5){
+	document.getElementById("demo").innerHTML = "금요일";
+}else if(dd == 6){
+	document.getElementById("demo").innerHTML = "토요일";
+}else if(dd == 7){
+	document.getElementById("demo").innerHTML = "일요일";
+}
+</script>
+
+</body>
+</html>

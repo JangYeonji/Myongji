@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#bb {font-size: 150%;}
+		#image {width:320px; height:200px;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		function ans(){
+			var co = document.getElementById("dd").value;
+			document.getElementById("an").innerHTML = Number(co);
+			if(co == 0930)
+				document.getElementById("cor").innerHTML = 'O';
+			else
+				document.getElementById("cor").innerHTML = 'X';
+		}
+		function park(){
+			document.getElementsByTagName('img')[0].src = '박지훈.gif';
+			document.getElementById('park').innerHTML += '♡';
+			$("#np").css("background","pink");
+			
+			//var cp1 = document.getElementById("park").count;
+			//document.getElementById("cp").innerHTML = Number(cp1);
+		}
+		function hwang(){
+			document.getElementsByTagName('img')[0].src = '황민현.gif';
+			document.getElementById('hwang').innerHTML += '♡';
+			$("#nh").css("color","pink");
+		}
+	</script>
+</head>
+<body>
+
+	<span id="bb">투표 마감일은?!</span> <input id="dd" type="text" size="6" /> ex)1111
+	<br/>
+	<button onclick="ans()">정답 확인</button> <span id="an"> 당신이 적은 답</span>
+	<span id="cor"></span>
+	<br/><br/>
+	<button onclick="document.getElementById('time').innerHTML = Date()"> 현재시각은? </button>
+	<span id="time"></span>
+	
+	<h2>투표하세요!</h2>
+	<button onclick="park()"> 박지훈 </button>
+	<img id="image" />
+	<button onclick="hwang()"> 황민현 </button>
+	<br/><br/>
+	<span id="np">박지훈</span><span id="park"></span><span id="cp"></span><br/>
+	<span id="nh">황민현</span><span id="hwang"></span><span id="ch"></span>
+
+</body>
+</html> 

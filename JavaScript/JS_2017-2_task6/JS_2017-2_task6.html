@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+<style>
+	*{ margin: 0; }
+	body{ 
+		padding: 30px 50px;
+	} 
+	#banner_wrap{
+		position: relative;
+		width: 800px;
+	}
+	#banner.active{
+	    height: 450px;
+	    border: 1px solid #ccc;
+	}
+	#banner{
+	    width:800px;
+	    height: 0px;
+	    position: relative;
+	    overflow: hidden;
+	    background: url('pixar.jpg');
+		background-size: 100%;
+	    border-bottom: 1px solid #666;
+	    border-top: 1px solid #ccc;
+	    box-sizing: border-box;
+	    transition-duration: 0.5s;
+	}
+	#banner:hover{
+		cursor: pointer;
+	}
+	#banner img{
+	    display: block;
+	    position: absolute;
+		width: 150px; height: 150px;
+	}
+	#toggle{
+		position: absolute;
+		right: 0; 
+		bottom: -18px;
+		background: #666;
+		color: white;
+		font-size: 12px; 
+		line-height: 18px;
+		padding: 0 5px;
+		text-decoration: none;
+	}
+	#toggle:hover{ text-decoration: underline; }
+</style>	
+</head>
+<body>
+	<div id="banner_wrap">
+		<figure id='banner' class="active">
+		    <img src='pixarball2.png'>
+			<input id='sound_btn' type='image' src='sound_off.png'>
+		</figure>
+		<a id="toggle" href="#">배너 닫기</a>
+	</div>
+<script>
+	var $banner = $('#banner'),			
+		$img = $banner.find('img'),
+		$toggle = $('#toggle'),
+		$sound_btn = $('#sound_btn'),
+		$banner_height = $banner.css('height'), 
+		cast = []; 
+		
+	var count =0; 
+		
+	function set_balloon(num){
+
+		var x = Math.floor(Math.random() * (600 - 10) + 10),  //10~700
+			y = Math.floor(Math.random() * (400 - 120) + 120),  //120~400
+			size = Math.floor(Math.random() * (200 - 100) + 100),  //100~200
+			angle = Math.floor(Math.random() * (360 - 0) + 0),  //0~360
+			speed = (5 - 0) + 0;  //0~5
+
+		cast[num] = {
+			x: x, y: -y, size: size, angle: angle, speed: speed	
+		};		
+	}
+	
+	function ball_init(){
+		$img.each(function(i){
+			set_balloon(i);
+			$img.css('left', '-9999px')
+				.css('top', '-9999px');	
+		});
+	}
+
+	function animate_balloon(){
+		$img.each(function(i){
+
+			$img.css('left', cast[i].x + 'px')	
+				.css('top', cast[i].y + 'px')	
+				.css('transform', 'rotate(' + cast[i].angle + 'deg)');	
+			
+			if(count <= 150){
+				cast[i].y += 1 + cast[i].speed;
+				cast[i].angle += cast[i].speed;
+				count++;
+			}
+			else if(count == 400){
+				count=0;
+				set_balloon(i);
+			}
+			else if(count > 150)
+			{	 
+				cast[i].y -= 1 + cast[i].speed;
+				cast[i].angle += cast[i].speed;
+				count++;
+			}
+		});	
+	}
+
+	function bgm_init(){
+		var bgm = new Audio();	
+		bgm.src = 'ToyStory.mp3';
+		bgm.loop = true;
+		$('body').append(bgm);	
+	}
+	
+	ball_init();  //초기화
+	setInterval(function(){ animate_balloon(); }, 1000/30);  //공이 떨어지는 시간
+	bgm_init();
+
+	$toggle.click(function(){
+		var attr = $banner.attr('class');
+
+		if(attr == 'active'){
+			$banner.removeAttr('class');
+			$(this).html('배너 열기');
+			return false;
+		} else{
+			$banner.attr('class', 'active');
+			$(this).html('배너 닫기');
+			return false;
+		}	
+	});
+	
+	$sound_btn.click(function(event){
+		var attr = $(this).attr('class');	
+		var bgm = $('audio');	
+
+		if(attr == 'active'){
+			$(this).removeAttr('class');
+			$(this).attr('src', 'sound_off.png');	
+			bgm[0].pause();
+		} else{
+			$(this).attr('class', 'active');
+			$(this).attr('src', 'sound_on.png');
+			bgm[0].play();
+		}
+		event.stopPropagation();	
+	});
+</script>
+</body>
+</html>

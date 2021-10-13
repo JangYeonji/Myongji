@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	var x = parseInt(Math.random()*9)+1;
+	var y = parseInt(Math.random()*9)+1;
+	
+	function test(){
+		document.getElementById("s1").innerHTML= x + " X ";
+		document.getElementById("s2").innerHTML= y + " ＝ ";
+	}
+	function ans(){
+		var aa = document.getElementById("result").value;
+		var bb = x*y;
+		
+		if(aa == bb){
+			document.write("맞았당");
+		}
+	    else{
+			document.write("다시해");
+		}
+   }   
+</script>
+</head>
+<body>
+	<h1>랜덤 구구단 게임</h1>
+	<button onclick ="test()">문제</button>
+	<button onclick ="ans()">답</button></br>
+	<span id="s1" size ="3"></span> 
+	<span id="s2" size ="3"></span>
+	<input id="result" size ="3"> </input>
+</body>
+</html>

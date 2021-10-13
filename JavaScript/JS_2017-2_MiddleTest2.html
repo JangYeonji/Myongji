@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1>산그리기</h1> 
+	높이 <input type="text" size='5' id='st'/><br/>
+	<button id='but' onclick='bu()'>입력완료</button>
+	<h1 id="result"></h1>
+    <script>
+		function bu(){
+			var inp = document.getElementById('st').value;
+			
+			if(inp>=0){
+				for(var i=1; i<=inp; i++){
+            
+					for(var j=inp; j>i; j--)
+						document.getElementById("result").innerHTML +="□";
+					for(var j=1; j<=i*2-1; j++)
+						document.getElementById("result").innerHTML +="★";
+					
+					document.getElementById("result").innerHTML +="<br/>";
+				}
+			}
+			else{
+				alert('양수값을 넣어주세요');
+				location.reload();
+			}
+		 }
+	</script>         
+</body>
+</html>
