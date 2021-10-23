@@ -1,4 +1,4 @@
-package Java_2019_2_tetris;
+package Java_2018_2_tetris;
 
 import java.awt.*;
 import java.awt.event.*;
