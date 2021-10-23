@@ -1,4 +1,4 @@
-package Java_2019_1_project;
+package Java_2018_1_project;
 
 public class Fish extends GameObject { //GameObject를 상속받는 Fish 선언
 	 public Fish(int x, int y, int distance) {
