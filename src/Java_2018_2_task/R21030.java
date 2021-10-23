@@ -1,4 +1,4 @@
-package Java_2019_2_task;
+package Java_2018_2_task;
 
 import java.awt.*;
 import java.awt.event.*;
