@@ -1,4 +1,4 @@
-package Java_2019_1_task;
+package Java_2018_1_task;
 
 import java.util.Scanner;
 
