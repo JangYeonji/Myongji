@@ -19,11 +19,6 @@
 - **반응형 웹** 화면 설정
 - 체크박스를 이용하여 **화면 변환**
 
-- **웹 페이지 레이아웃**을 구성할 수 있음.
-- HTML5의 다양한 **태그**를 사용할 수 있음.
-- CSS3의 **선택자** 및 **속성**을 사용할 수 있음.
-- CSS3의 **애니메이션 및 반응형 웹**을 구현할 수 있음.
-
 ### Screenshot
 ![image](https://user-images.githubusercontent.com/86348868/148528366-3aeb083e-0028-401f-a604-6c2573e9f818.png)
 ![image](https://user-images.githubusercontent.com/86348868/148528475-90c489dd-58c6-4e56-8d5e-034db32732bc.png)
